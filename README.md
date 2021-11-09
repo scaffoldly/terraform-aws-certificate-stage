@@ -46,6 +46,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_domains"></a> [domains](#input\_domains) | The list of domains for which to create a certificate | `list(string)` | n/a | yes |
+| <a name="input_stage"></a> [stage](#input\_stage) | The stage (e.g. live, nonlive) | `string` | n/a | yes |
 
 ## Outputs
 
@@ -53,4 +54,5 @@ No modules.
 |------|-------------|
 | <a name="output_certificate_arn"></a> [certificate\_arn](#output\_certificate\_arn) | The Certificate ARN |
 | <a name="output_domains"></a> [domains](#output\_domains) | Re-output of var.domains |
+| <a name="output_stage"></a> [stage](#output\_stage) | Re-output of var.stage |
 <!-- END_TF_DOCS -->
