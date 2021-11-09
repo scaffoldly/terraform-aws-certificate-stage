@@ -1,5 +1,5 @@
 output "stage" {
-  value = var.stage
+  value       = var.stage
   description = "Re-output of var.stage"
 }
 
