@@ -33,7 +33,7 @@ resource "aws_route53_record" "verification_record" {
   records = [each.value.record]
   ttl     = 60
   type    = each.value.type
-  zone_id = lookup(data.aws_route53_zone.zone, each.value.domain, "unknown-zone-id")
+  zone_id = lookup(data.aws_route53_zone.zone[each.value.domain], "zone_id", "unknown-zone-id")
 
   allow_overwrite = true
 
