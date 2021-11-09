@@ -1,5 +1,5 @@
 data "aws_route53_zone" "zone" {
-  for_each = var.domains
+  for_each = toset(var.domains)
   name     = each.value
 
   provider = aws.dns
