@@ -1,6 +1,5 @@
 data "aws_route53_zone" "zone" {
-  for_each = toset(var.domains)
-  name     = each.value
+  name = var.root_domain
 
   provider = aws.dns
 }
@@ -33,7 +32,7 @@ resource "aws_route53_record" "verification_record" {
   records = [each.value.record]
   ttl     = 60
   type    = each.value.type
-  zone_id = lookup(data.aws_route53_zone.zone[each.value.domain], "zone_id", "unknown-zone-id")
+  zone_id = data.aws_route53_zone.zone.zone_id
 
   allow_overwrite = true
 
