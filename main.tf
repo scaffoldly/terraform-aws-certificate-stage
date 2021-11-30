@@ -1,8 +1,9 @@
 locals {
+  subdomains = compact(var.subdomains)
   domains = concat(
     contains(var.subdomains, "") ? [var.subdomain_suffix != "" ? "${var.subdomain_suffix}.${var.root_domain}" : var.root_domain] : [],
-    length(compact(var.subdomains)) >= 0
-    ? var.subdomain_suffix != "" ? formatlist("%s-%s.%s", var.subdomains, var.subdomain_suffix, var.root_domain) : formatlist("%s.%s", var.subdomains, var.root_domain)
+    length(local.subdomains) > 0
+    ? var.subdomain_suffix != "" ? formatlist("%s-%s.%s", local.subdomains, var.subdomain_suffix, var.root_domain) : formatlist("%s.%s", local.subdomains, var.root_domain)
     : []
   )
 }
