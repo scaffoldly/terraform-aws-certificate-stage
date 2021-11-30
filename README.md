@@ -45,15 +45,16 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_domains"></a> [domains](#input\_domains) | The list of domains for which to create a certificate | `list(string)` | n/a | yes |
 | <a name="input_root_domain"></a> [root\_domain](#input\_root\_domain) | The root domain | `string` | n/a | yes |
 | <a name="input_stage"></a> [stage](#input\_stage) | The stage (e.g. live, nonlive) | `string` | n/a | yes |
+| <a name="input_subdomain_suffix"></a> [subdomain\_suffix](#input\_subdomain\_suffix) | The (optional) suffix to append to each subdomain | `string` | `""` | no |
+| <a name="input_subdomains"></a> [subdomains](#input\_subdomains) | The list of subdomains for which to create a certificate | `list(string)` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_certificate_arn"></a> [certificate\_arn](#output\_certificate\_arn) | The Certificate ARN |
-| <a name="output_domains"></a> [domains](#output\_domains) | Re-output of var.domains |
+| <a name="output_domains"></a> [domains](#output\_domains) | Computed list of domains in certificate |
 | <a name="output_stage"></a> [stage](#output\_stage) | Re-output of var.stage |
 <!-- END_TF_DOCS -->
