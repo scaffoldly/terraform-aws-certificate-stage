@@ -8,7 +8,13 @@ variable "root_domain" {
   description = "The root domain"
 }
 
-variable "domains" {
+variable "subdomains" {
   type        = list(string)
-  description = "The list of domains for which to create a certificate"
+  description = "The list of subdomains for which to create a certificate"
+}
+
+variable "subdomain_suffix" {
+  type        = string
+  description = "The (optional) suffix to append to each subdomain"
+  default     = ""
 }

@@ -9,6 +9,6 @@ output "certificate_arn" {
 }
 
 output "domains" {
-  value       = var.domains
-  description = "Re-output of var.domains"
+  value       = local.domains
+  description = "Computed list of domains in certificate"
 }

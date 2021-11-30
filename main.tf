@@ -1,3 +1,11 @@
+locals {
+  domains = concat(
+    length(var.subdomains) >= 0
+    ? var.subdomain_suffix != "" ? formatlist("%s-%s.%s", var.subdomains, var.subdomain_suffix, var.root_domain) : formatlist("%s.%s", var.subdomains, var.root_domain)
+    : [var.subdomain_suffix != "" ? "${var.subdomain_suffix}.${var.root_domain}" : var.root_domain]
+  )
+}
+
 data "aws_route53_zone" "zone" {
   name = var.root_domain
 
@@ -5,8 +13,8 @@ data "aws_route53_zone" "zone" {
 }
 
 resource "aws_acm_certificate" "certificate" {
-  domain_name               = var.domains[0]
-  subject_alternative_names = length(var.domains) > 1 ? slice(var.domains, 1, length(var.domains)) : null
+  domain_name               = local.domains[0]
+  subject_alternative_names = length(local.domains) > 1 ? slice(local.domains, 1, length(local.domains)) : null
   validation_method         = "DNS"
 
   options {
